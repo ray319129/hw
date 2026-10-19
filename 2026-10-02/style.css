@@ -1,0 +1,154 @@
+/* 基礎頁面重設與背景 */
+body {
+    margin: 0;
+    padding: 40px 20px;
+    background-color: #d6eae1; /* 圖片外圍的淡綠色背景 */
+    font-family: "Microsoft JhengHei", "Heiti TC", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* 主白色卡片容器 */
+.container {
+    background-color: #ffffff;
+    max-width: 800px;
+    width: 100%;
+    border-radius: 24px;
+    padding: 40px 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* 四周擴散的柔和陰影 */
+    box-sizing: border-box;
+}
+
+/* 主標題樣式（深青綠色襯線感字體） */
+.main-title {
+    color: #1a7373;
+    font-size: 28px;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* 副標題說明文字 */
+.subtitle {
+    color: #333333;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* 小標題：請輸入選擇的學習主題 */
+.section-title {
+    font-weight: bold;
+    font-size: 15px;
+    color: #000000;
+    margin-bottom: 18px;
+}
+
+/* 單選按鈕群組外殼 */
+.radio-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+/* 單選按鈕標籤外觀（圓角邊框） */
+.radio-label {
+    display: inline-flex;
+    align-items: center;
+    background-color: #e4f4ee; /* 淡青綠色背景 */
+    border: 1px solid #bce2d4;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #333333;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+/* 隱藏原生瀏覽器的 radio button */
+.radio-label input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* 自訂內部圓圈圖標 */
+.custom-radio {
+    width: 12px;
+    height: 12px;
+    border: 1px solid #1aa39a;
+    border-radius: 50%;
+    margin-right: 8px;
+    display: inline-block;
+    position: relative;
+    background-color: #ffffff;
+}
+
+/* 當選取單選按鈕時的藍綠色內點與標籤變化 */
+.radio-label input[type="radio"]:checked + .custom-radio::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #1aa39a;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 滿版「幫我出題」大按鈕 */
+.action-btn {
+    width: 100%;
+    background-color: #19aba0; /* 亮青色 */
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(25, 171, 160, 0.2);
+    margin-bottom: 30px;
+    transition: background-color 0.2s ease;
+}
+
+.action-btn:hover {
+    background-color: #148f86;
+}
+
+/* 下方區塊（AI出題 / AI回饋）的通用外殼 */
+.info-block {
+    background-color: #f7fbf9; /* 非常淡的綠白底色 */
+    border: 1px solid #edf5f1;
+    border-radius: 12px;
+    padding: 20px 25px;
+    margin-bottom: 20px;
+}
+
+.info-block:last-child {
+    margin-bottom: 0;
+}
+
+/* 區塊內的小標題 */
+.block-title {
+    color: #1aa39a;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+/* 區塊內提示內文 */
+.block-content {
+    color: #666666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
