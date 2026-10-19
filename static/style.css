@@ -152,3 +152,45 @@ body {
     line-height: 1.6;
     margin: 0;
 }
+
+/* 目前選擇的主題 */
+.current-topic {
+    color: #333333;
+    font-size: 15px;
+    margin-top: -15px;
+    margin-bottom: 20px;
+}
+
+/* 題目文字 */
+.question-text {
+    color: #333333;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+/* 作答區塊內的按鈕與選項間距 */
+.info-block .radio-group {
+    margin-bottom: 20px;
+}
+
+.info-block .action-btn {
+    margin-bottom: 0;
+}
+
+/* 作答回饋 */
+.feedback {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    color: #333333;
+}
+
+.feedback.correct {
+    color: #1a8a5a;
+}
+
+.feedback.wrong {
+    color: #c0392b;
+}

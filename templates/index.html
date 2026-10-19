@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 程式練習助手</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <!-- 標題與簡介 -->
+        <h1 class="main-title">AI 程式練習助手</h1>
+        <p class="subtitle">請選擇一個主題，然後點擊「幫我出題」按鈕，AI 將會為您生成一個練習題目。</p>
+
+        <!-- 主題選擇區：用 POST 把學習主題送給 Flask -->
+        <form method="POST">
+            <p class="section-title">請輸入選擇的學習主題：</p>
+            <div class="radio-group">
+                {% for t in topics %}
+                <label class="radio-label">
+                    <input type="radio" name="topic" value="{{ t }}" {% if t == topic or (not topic and loop.first) %}checked{% endif %}>
+                    <span class="custom-radio"></span>
+                    {{ t }}
+                </label>
+                {% endfor %}
+            </div>
+
+            <!-- 動作按鈕 -->
+            <button type="submit" class="action-btn">幫我出題</button>
+        </form>
+
+        {% if topic %}
+        <p class="current-topic">目前選擇的主題：{{ topic }}</p>
+        {% endif %}
+
+        <!-- AI 出題區塊 -->
+        <div class="info-block">
+            <h2 class="block-title">AI 出題：</h2>
+            {% if question %}
+            <p class="question-text">{{ question.text }}</p>
+
+            <!-- 作答表單：用隱藏欄位保留學習主題 -->
+            <form method="POST">
+                <input type="hidden" name="topic" value="{{ topic }}">
+                <div class="radio-group">
+                    {% for key, value in question.options.items() %}
+                    <label class="radio-label">
+                        <input type="radio" name="student_answer" value="{{ key }}" {% if key == student_answer %}checked{% endif %}>
+                        <span class="custom-radio"></span>
+                        {{ key }}. {{ value }}
+                    </label>
+                    {% endfor %}
+                </div>
+                <button type="submit" name="action" value="check" class="action-btn">提交答案</button>
+            </form>
+            {% else %}
+            <p class="block-content">請選擇一個主題，然後點擊「幫我出題」按鈕，AI 將會為您生成一個練習題目。</p>
+            {% endif %}
+        </div>
+
+        <!-- AI 回饋區塊 -->
+        <div class="info-block">
+            <h2 class="block-title">AI 回饋：</h2>
+            {% if feedback %}
+            <p class="feedback {% if feedback == '答對了！' %}correct{% elif feedback == '答錯了！' %}wrong{% endif %}">{{ feedback }}</p>
+            {% else %}
+            <p class="block-content">選擇答案並點擊「提交答案」後，這裡會顯示作答結果。</p>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>
